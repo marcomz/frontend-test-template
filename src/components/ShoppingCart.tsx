@@ -29,11 +29,11 @@ export default function ShoppingCart() {
   }, []);
 
   return (
-    <div>
+    <div className="relative">
       <Link href="/cart">
         <Image src="/cart.svg" width={24} height={24} alt="Shopping Cart" />
       </Link>
-      {(itemsInCart > 0) && <span>{itemsInCart}</span>}
+      {(itemsInCart > 0) && <span className="absolute top-[-12] right-[-12] bg-red-500 text-white px-2 py-1 rounded-2xl text-[8px]">{itemsInCart}</span>}
     </div>
   );
 }
