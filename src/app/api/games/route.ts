@@ -22,10 +22,16 @@ export async function GET(request: Request) {
 
   const fromIndex = (page - 1) * ITEMS_PER_PAGE;
   const toIndex = page * ITEMS_PER_PAGE;
-  games = games.slice(fromIndex, toIndex);
+  const filteredGames = games.slice(fromIndex, toIndex);
+  // NOTE: Found a little bug here, if we fetch games by category, the resulting 'totalPages' will always be 3,
+  // even if there are only games to fill a single page. This is the fix for that
+  let totalGames = allGames;
+  if (genre) {
+    totalGames = games;
+  }
 
-  const totalPages = Math.ceil(allGames.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(totalGames.length / ITEMS_PER_PAGE);
   const currentPage = page;
 
-  return Response.json({ games, availableFilters, totalPages, currentPage });
+  return Response.json({ games: filteredGames, availableFilters, totalPages, currentPage });
 }

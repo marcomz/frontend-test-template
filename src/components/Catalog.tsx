@@ -10,7 +10,7 @@ export default function Catalog({ data, genreFromUrl = 'all' }) {
   // NOTE: Found a little bug here, if we fetch games by category, the resulting 'totalPages' will always be 3,
   // even if there are only games to fill a single page, so I added this little workaourd, we can remove the
   // following condition if that is fixed
-  const [totalPages, setTotalPages] = useState((genreFromUrl !== 'all') ? 1 : data.totalPages);
+  const [totalPages, setTotalPages] = useState(data.totalPages);
   const [areMoreGamesLoading, setAreMoreGamesLoading] = useState(false);
   const [newGenreLoading, setNewGenreLoading] = useState('');
   const [genre, setGenre] = useState(genreFromUrl);
@@ -40,7 +40,7 @@ export default function Catalog({ data, genreFromUrl = 'all' }) {
       const result = await response.json();
       setNewGenreLoading('');
       // NOTE: Same as above, if there are not enought games we manually set the 'totalPages' value
-      setTotalPages((result.games.length < 12) ? 1 : result.totalPages);
+      setTotalPages(result.totalPages);
       setLastPageFetched(result.currentPage);
       setGames(result.games);
       setGenre(newGenre);
