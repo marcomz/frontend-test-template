@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
+import NavBar from "../components/NavBar.tsx";
 
-const inter = Inter({ subsets: ["latin"] });
+const archivo = Archivo({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Apply Digital Test",
-  description: "Frontend development test for Apply Digital",
+  title: "Apply Digital Test | Marco",
+  description: "Frontend development test for Apply Digital by Marco, web developer",
 };
 
 export default function RootLayout({
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={archivo.className}>
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }

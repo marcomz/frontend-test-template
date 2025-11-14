@@ -1,7 +1,16 @@
-export default async function Home() {
+import PageTitle from "../components/PageTitle.tsx";
+import Catalog from "../components/Catalog.tsx";
+
+export default async function Home({ searchParams }) {
+  const genre = (await searchParams).genre;
+  let url = `http://localhost:3000/api/games${genre ? `?genre=${genre}` : ''}`;
+  const data = await fetch(url);
+  const result = await data.json();
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24 font-bold text-4xl text-blue-600'>
-      Hello, world!
-    </main>
+    <>
+      <PageTitle />
+      <Catalog data={result} genreFromUrl={genre} />
+    </>
   )
 }
