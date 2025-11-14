@@ -22,7 +22,7 @@ export default function ProductListing({ games, showSeeMore, areMoreGamesLoading
   }
 
   return (
-    <div className="ProductListing">
+    <div>
       {
         games.map(game => {
           return <ProductCard game={game} key={game.id} cart={cart} addOrRemoveItemFromCart={addOrRemoveItemFromCart} />
@@ -32,7 +32,7 @@ export default function ProductListing({ games, showSeeMore, areMoreGamesLoading
         showSeeMore && 
           <button
             onClick={fetchMoreGames}
-            className="ProductListingButton font-[Archivo] cursor-pointer"
+            className="font-[Archivo] cursor-pointer w-full max-w-[327px] m-auto block py-4 font-bold text-sm leading-4 tracking-[0.5] rounded-lg text-white bg-[#585660]"
             disabled={areMoreGamesLoading}
           >
             {areMoreGamesLoading ? 'Loading...' : 'SEE MORE'}

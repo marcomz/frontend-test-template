@@ -29,7 +29,7 @@ export default function ShoppingCart() {
   }, []);
 
   return (
-    <div className="shopping_cart">
+    <div>
       <Link href="/cart">
         <Image src="/cart.svg" width={24} height={24} alt="Shopping Cart" />
       </Link>
