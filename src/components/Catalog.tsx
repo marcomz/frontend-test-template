@@ -2,28 +2,42 @@
 
 import Filter from "./Filter.tsx";
 import ProductListing from "./ProductListing.tsx";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function Catalog({ data, genreFromUrl = 'all' }) {
+export default function Catalog({ data, genreFromUrl = 'All' }) {
   const [games, setGames] = useState(data.games);
   const [lastPageFetched, setLastPageFetched] = useState(1);
-  // NOTE: Found a little bug here, if we fetch games by category, the resulting 'totalPages' will always be 3,
-  // even if there are only games to fill a single page, so I added this little workaourd, we can remove the
-  // following condition if that is fixed
   const [totalPages, setTotalPages] = useState(data.totalPages);
   const [areMoreGamesLoading, setAreMoreGamesLoading] = useState(false);
   const [newGenreLoading, setNewGenreLoading] = useState('');
   const [genre, setGenre] = useState(genreFromUrl);
+
+  useEffect(() => {
+    const handleUrlChange = (event) => {
+      if (event.type === 'popstate') {
+        const params = new URLSearchParams(event.target.location.search);
+        let newGenre = params.get('genre');
+        if (newGenre === null) newGenre = 'All'
+        updateGenre(newGenre);
+      }
+    };
+
+    window.addEventListener('popstate', handleUrlChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+    };
+  }, []);
 
   async function fetchMoreGames() {
     if (lastPageFetched >= totalPages) {
       return;
     }
     setAreMoreGamesLoading(true);
-    const genreSearchParam = genre === 'all' ? '' : `&genre=${genre}`;
+    const genreSearchParam = genre === 'All' ? '' : `&genre=${genre}`;
     const url = `/api/games?page=${lastPageFetched + 1}${genreSearchParam}`;
     const response = await fetch(url).catch(err => err);
-    if (response.status) {
+    if (response.status === 200) {
       const result = await response.json();
       setAreMoreGamesLoading(false);
       setLastPageFetched(result.currentPage);
@@ -34,12 +48,11 @@ export default function Catalog({ data, genreFromUrl = 'all' }) {
 
   async function updateGenre(newGenre) {
     setNewGenreLoading(newGenre);
-    const url = newGenre === 'all' ? '/api/games' : `/api/games?genre=${newGenre}`;
+    const url = `/api/games${newGenre === 'All' ? '' : `?genre=${newGenre}`}`;
     const response = await fetch(url).catch(err => err);
     if (response.status === 200) {
       const result = await response.json();
       setNewGenreLoading('');
-      // NOTE: Same as above, if there are not enought games we manually set the 'totalPages' value
       setTotalPages(result.totalPages);
       setLastPageFetched(result.currentPage);
       setGames(result.games);

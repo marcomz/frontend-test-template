@@ -9,7 +9,7 @@ export default function GenreSelector({ categories, genre, updateGenre }) {
     const newGenre = event.target.value;
     if (newGenre) {
       setSelectedItem(newGenre);
-      if (newGenre === 'all') {
+      if (newGenre === 'All') {
         window.history.pushState(null, '', '/');
       } else {
         window.history.pushState(null, '', `/?genre=${newGenre}`);
@@ -21,7 +21,7 @@ export default function GenreSelector({ categories, genre, updateGenre }) {
   return (
     <div className="grow-[3]">
       <select name="genre" value={selectedItem} className="w-full" onChange={handleChange}>
-        <option value="all">All</option>
+        <option value="All">All</option>
         {
           categories.map((category, index) => <option value={category} key={`category_select_${index}`}>{category}</option>)
         }
