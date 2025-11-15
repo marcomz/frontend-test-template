@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ProductCard from "./ProductCard.tsx";
+import SeeMoreButton from "./SeeMoreButton.tsx";
 import updateCart from "../utils/updateCart.ts";
 
 export default function ProductListing({ games, showSeeMore, areMoreGamesLoading, fetchMoreGames }) {
@@ -29,14 +30,7 @@ export default function ProductListing({ games, showSeeMore, areMoreGamesLoading
         })
       }
       {
-        showSeeMore && 
-          <button
-            onClick={fetchMoreGames}
-            className="font-[Archivo] cursor-pointer w-full max-w-[327px] m-auto block py-4 font-bold text-sm leading-4 tracking-[0.5] rounded-lg text-white bg-[#585660]"
-            disabled={areMoreGamesLoading}
-          >
-            {areMoreGamesLoading ? 'Loading...' : 'SEE MORE'}
-          </button>
+        showSeeMore && <SeeMoreButton fetchMoreGames={fetchMoreGames} areMoreGamesLoading={areMoreGamesLoading} />
       }
     </div>
   )

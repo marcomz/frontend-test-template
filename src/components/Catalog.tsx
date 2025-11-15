@@ -33,12 +33,16 @@ export default function Catalog({ data, genreFromUrl = 'All' }) {
     if (lastPageFetched >= totalPages) {
       return;
     }
+
     setAreMoreGamesLoading(true);
+
     const genreSearchParam = genre === 'All' ? '' : `&genre=${genre}`;
     const url = `/api/games?page=${lastPageFetched + 1}${genreSearchParam}`;
     const response = await fetch(url).catch(err => err);
+
     if (response.status === 200) {
       const result = await response.json();
+
       setAreMoreGamesLoading(false);
       setLastPageFetched(result.currentPage);
       setTotalPages(result.totalPages);
