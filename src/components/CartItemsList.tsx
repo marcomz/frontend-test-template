@@ -5,9 +5,9 @@ export default function CartItemsList({ cart, removeItemFromCart }) {
     <>
       <div>
         {
-          cart.map(game => {
-            return <CartItemCard game={game} removeItemFromCart={removeItemFromCart} key={`cart_item_${game.id}`} />
-          })
+          cart.map((game, index) => 
+            <CartItemCard game={game} removeItemFromCart={removeItemFromCart} key={`cart_item_${game.id}`} isItFirstInTheList={index === 0} />
+          )
         }
       </div>
     </>
