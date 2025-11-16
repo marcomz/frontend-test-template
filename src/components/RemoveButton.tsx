@@ -1,7 +1,6 @@
 "use client";
 
-import GameImage from "./GameImage.tsx";
-import Genre from "./Genre.tsx";
+import Image from 'next/image';
 
 export default function RemoveButton({ game, removeItemFromCart }) {
   function handleClick() {
@@ -9,8 +8,8 @@ export default function RemoveButton({ game, removeItemFromCart }) {
   }
 
   return (
-    <>
-      <button onClick={handleClick}>Remove</button>
-    </>
+    <button onClick={handleClick} className="absolute top-[6] right-[20]">
+      <Image src="/remove.svg" width={13} height={13} alt="Delete button" />
+    </button>
   )
 }

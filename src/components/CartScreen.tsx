@@ -29,8 +29,10 @@ export default function CartScreen() {
   return (
     <>
       <CartTitle itemsQuantityLabel={itemsQuantityLabel} />
-      <CartItemsList cart={cart} removeItemFromCart={removeItemFromCart} />
-      <CartSummary cart={cart} itemsQuantityLabel={itemsQuantityLabel} />
+      <div className="mx-6">
+        <CartItemsList cart={cart} removeItemFromCart={removeItemFromCart} />
+        <CartSummary cart={cart} itemsQuantityLabel={itemsQuantityLabel} />
+      </div>
     </>
   );
 }
