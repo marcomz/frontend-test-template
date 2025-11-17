@@ -3,6 +3,7 @@
 import CartTitle from "./CartTitle.tsx";
 import CartItemsList from "./CartItemsList.tsx";
 import CartSummary from "./CartSummary.tsx";
+import CheckoutButton from "./CheckoutButton.tsx";
 import updateCart from "../utils/updateCart.ts";
 
 import { useState, useEffect } from 'react';
@@ -32,6 +33,7 @@ export default function CartScreen() {
       <div className="mx-6">
         <CartItemsList cart={cart} removeItemFromCart={removeItemFromCart} />
         <CartSummary cart={cart} itemsQuantityLabel={itemsQuantityLabel} />
+        <CheckoutButton />
       </div>
     </>
   );

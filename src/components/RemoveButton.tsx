@@ -7,8 +7,13 @@ export default function RemoveButton({ game, removeItemFromCart, isItFirstInTheL
     removeItemFromCart(game);
   }
 
+  const classNameForFirst = `absolute right-[20] top-0`;
+  const classNameForNotFirst = `absolute right-[20] top-[20]`;
+
+  const className = isItFirstInTheList ? classNameForFirst : classNameForNotFirst;
+
   return (
-    <button onClick={handleClick} className={`absolute top-[${isItFirstInTheList ? '6' : '20'}] right-[20]`}>
+    <button onClick={handleClick} className={className}>
       <Image src="/remove.svg" width={13} height={13} alt="Delete button" />
     </button>
   )
