@@ -3,9 +3,11 @@ import ShoppingCart from "./ShoppingCart.tsx";
 
 export default function NavBar() {
   return (
-    <div className="flex justify-between items-baseline px-6 bg-[#eeeeee] py-4.25">
-      <Logo />
-      <ShoppingCart />
+    <div className="px-6 bg-[#eeeeee] py-4.25">
+      <div className="flex justify-between items-baseline mx-auto max-w-5xl">
+        <Logo />
+        <ShoppingCart />
+      </div>
     </div>
   );
 }

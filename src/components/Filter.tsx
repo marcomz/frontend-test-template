@@ -3,8 +3,8 @@ import GenreSelector from "./GenreSelector.tsx";
 
 export default function Filter({ categories, genre, updateGenre }) {
   return (
-    <div className="font-[Archivo]">
-      <div className="flex py-4 px-5.75 items-baseline">
+    <div className="max-w-5xl mx-auto">
+      <div className="flex py-4 px-5.75 items-baseline max-w-[375] ml-auto">
         <div className="flex grow">
           <GenreIndicator />
         </div>

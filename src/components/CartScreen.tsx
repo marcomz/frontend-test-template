@@ -30,10 +30,12 @@ export default function CartScreen() {
   return (
     <>
       <CartTitle itemsQuantityLabel={itemsQuantityLabel} />
-      <div className="mx-6">
+      <div className="mx-6 grid grid-cols-1 md:grid-cols-2">
         <CartItemsList cart={cart} removeItemFromCart={removeItemFromCart} />
-        <CartSummary cart={cart} itemsQuantityLabel={itemsQuantityLabel} />
-        <CheckoutButton />
+        <div>
+          <CartSummary cart={cart} itemsQuantityLabel={itemsQuantityLabel} />
+          <CheckoutButton />
+        </div>
       </div>
     </>
   );

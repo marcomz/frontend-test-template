@@ -23,7 +23,7 @@ export default function ProductListing({ games, showSeeMore, areMoreGamesLoading
   }
 
   return (
-    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-5 max-w-3xl mx-auto lg:max-w-5xl md:grid-cols-2 lg:grid-cols-3 mb-7">
       {
         games.map(game => {
           return <ProductCard game={game} key={game.id} cart={cart} addOrRemoveItemFromCart={addOrRemoveItemFromCart} />
