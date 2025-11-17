@@ -1,3 +1,5 @@
 export default function GameImage({ src, isItCartScreen }) {
-  return <img className={`mb-4 ${isItCartScreen ? 'w-[88%]' : ''}`} src={src} />
+  let className = 'mb-4';
+  if (isItCartScreen) className += ' w-[88%] lg:w-3xs h-auto mr-8';
+  return <img className={className} src={src} />
 }
