@@ -1,4 +1,4 @@
-export default function GameImage({ src, isItCartScreen, isNew }) {
+export default function GameImage({ src, isItCartScreen, isNew }: { src: string; isItCartScreen: boolean; isNew: boolean }) {
   let className = 'mb-4';
   if (isItCartScreen) className += ' w-[88%] lg:w-3xs h-auto mr-8 shrink-0';
   if (isNew) className += ' relative';

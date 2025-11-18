@@ -1,7 +1,13 @@
 import GenreIndicator from "./GenreIndicator";
 import GenreSelector from "./GenreSelector";
 
-export default function Filter({ categories, genre, updateGenre }) {
+interface Props {
+  categories: string[];
+  genre: string;
+  updateGenre: (newGenre: string) => void;
+}
+
+export default function Filter({ categories, genre, updateGenre }: Props) {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="flex py-4 px-5.75 items-baseline max-w-[375] ml-auto">

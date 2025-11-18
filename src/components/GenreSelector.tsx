@@ -1,11 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
-export default function GenreSelector({ categories, genre, updateGenre }) {
+interface Props {
+  categories: string[];
+  genre: string;
+  updateGenre: (newGenre: string) => void;
+}
+
+export default function GenreSelector({ categories, genre, updateGenre }: Props) {
   const [selectedItem, setSelectedItem] = useState(genre);
 
-  function handleChange (event) {
+  function handleChange (event: ChangeEvent<HTMLSelectElement>) {
     const newGenre = event.target.value;
     if (newGenre) {
       setSelectedItem(newGenre);

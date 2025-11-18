@@ -3,8 +3,25 @@
 import Filter from "./Filter";
 import ProductListing from "./ProductListing";
 import { useState, useEffect } from 'react';
+import { Game } from "@/utils/endpoint";
 
-export default function Catalog({ data, genreFromUrl = 'All' }) {
+interface Data {
+  games: Game[];
+  availableFilters: string[];
+  totalPages: number;
+  currentPage: number;
+}
+
+interface Props {
+  data: Data;
+  genreFromUrl: string;
+}
+
+interface CustomElement extends HTMLElement {
+  location: {search: string};
+}
+
+export default function Catalog({ data, genreFromUrl = 'All' }: Props) {
   const [games, setGames] = useState(data.games);
   const [lastPageFetched, setLastPageFetched] = useState(1);
   const [totalPages, setTotalPages] = useState(data.totalPages);
@@ -13,12 +30,15 @@ export default function Catalog({ data, genreFromUrl = 'All' }) {
   const [genre, setGenre] = useState(genreFromUrl);
 
   useEffect(() => {
-    const handleUrlChange = (event) => {
+    const handleUrlChange = (event: PopStateEvent) => {
       if (event.type === 'popstate') {
-        const params = new URLSearchParams(event.target.location.search);
-        let newGenre = params.get('genre');
-        if (newGenre === null) newGenre = 'All'
-        updateGenre(newGenre);
+        if (event.target !== null) {
+          const targetElement = event.target as CustomElement;
+          const params = new URLSearchParams(targetElement.location.search);
+          let newGenre = params.get('genre');
+          if (newGenre === null) newGenre = 'All'
+          updateGenre(newGenre);
+        }
       }
     };
 
@@ -50,7 +70,7 @@ export default function Catalog({ data, genreFromUrl = 'All' }) {
     }
   }
 
-  async function updateGenre(newGenre) {
+  async function updateGenre(newGenre: string) {
     setNewGenreLoading(newGenre);
     const url = `/api/games${newGenre === 'All' ? '' : `?genre=${newGenre}`}`;
     const response = await fetch(url).catch(err => err);

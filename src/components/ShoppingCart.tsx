@@ -8,23 +8,27 @@ export default function ShoppingCart() {
   const [itemsInCart, setItemsInCart] = useState(0);
 
   useEffect(() => {
-    const handleStorageChange = (event) => {
-      if (event.type === 'shoppingCartChange') {
-        setItemsInCart(event.detail.itemsInCart);
+    const handleStorageChange = (event: any) => {
+      if (localStorage) {
+        const storedCart: string | null = localStorage.getItem('shoppingCart');
+        if (storedCart !== null) {
+          const parsedStoredCart = JSON.parse(storedCart);
+          setItemsInCart(parsedStoredCart.length);
+        }
       }
     };
 
     if (localStorage) {
-      const storedCart = JSON.parse(localStorage.getItem('shoppingCart'));
-      if (storedCart) {
-        setItemsInCart(storedCart.length);
+      const storedCart: string | null = localStorage.getItem('shoppingCart');
+      if (storedCart !== null) {
+        setItemsInCart(JSON.parse(storedCart));
       }
     }
 
-    window.addEventListener('shoppingCartChange', handleStorageChange);
+    window.addEventListener('shoppingCartChange', handleStorageChange as unknown as EventListener);
 
     return () => {
-      window.removeEventListener('shoppingCartChange', handleStorageChange);
+      window.removeEventListener('shoppingCartChange', handleStorageChange as unknown as EventListener);
     };
   }, []);
 

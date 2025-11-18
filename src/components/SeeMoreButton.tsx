@@ -1,6 +1,11 @@
 "use client";
 
-export default function SeeMoreButton({ fetchMoreGames, areMoreGamesLoading }) {
+interface Props {
+  fetchMoreGames: () => void;
+  areMoreGamesLoading: boolean;
+}
+
+export default function SeeMoreButton({ fetchMoreGames, areMoreGamesLoading }: Props) {
   return (
     <button
       onClick={fetchMoreGames}

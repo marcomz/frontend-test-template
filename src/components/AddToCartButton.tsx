@@ -1,6 +1,14 @@
 "use client";
 
-export default function AddToCartButton({ game, cart, addOrRemoveItemFromCart }) {
+import { Game } from "@/utils/endpoint";
+
+interface Props {
+  game: Game;
+  cart: Game[];
+  addOrRemoveItemFromCart: (game: Game) => void;
+}
+
+export default function AddToCartButton({ game, cart, addOrRemoveItemFromCart }: Props) {
   const isInCart = cart.some(item => item.id === game.id);
 
   function handleClick() {

@@ -2,7 +2,15 @@
 
 import Image from 'next/image';
 
-export default function RemoveButton({ game, removeItemFromCart, isItFirstInTheList }) {
+import { Game } from "@/utils/endpoint";
+
+interface Props {
+  game: Game;
+  removeItemFromCart: (game: Game) => void;
+  isItFirstInTheList: boolean;
+}
+
+export default function RemoveButton({ game, removeItemFromCart, isItFirstInTheList }: Props) {
   function handleClick() {
     removeItemFromCart(game);
   }

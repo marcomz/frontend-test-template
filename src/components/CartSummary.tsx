@@ -1,4 +1,11 @@
-export default function CartSummary({ cart, itemsQuantityLabel }) {
+import { Game } from "@/utils/endpoint";
+
+interface Props {
+  cart: Game[];
+  itemsQuantityLabel: string;
+}
+
+export default function CartSummary({ cart, itemsQuantityLabel }: Props) {
   const total = cart.reduce((accumulator, item) => accumulator + item.price, 0);
   return (
     <div className="border-[0.5] border-[#8F8F8F] rounded-lg text-[#3b3b3b] py-6 px-4 mx-4">

@@ -4,20 +4,29 @@ import { useState, useEffect } from 'react';
 import ProductCard from "./ProductCard";
 import SeeMoreButton from "./SeeMoreButton";
 import updateCart from "../utils/updateCart";
+import { Game } from "@/utils/endpoint";
 
-export default function ProductListing({ games, showSeeMore, areMoreGamesLoading, fetchMoreGames }) {
-  const [cart, setCart] = useState([]);
+interface Props {
+  games: Game[];
+  showSeeMore: boolean;
+  areMoreGamesLoading: boolean;
+  fetchMoreGames: () => void;
+}
+
+export default function ProductListing({ games, showSeeMore, areMoreGamesLoading, fetchMoreGames }: Props) {
+  const [cart, setCart] = useState<Game[]>([]);
 
   useEffect(() => {
     if (localStorage) {
-      const storedCart = JSON.parse(localStorage.getItem('shoppingCart'));
-      if (storedCart && storedCart.length > 0) {
-        setCart(storedCart);
+      const storedCart: string | null = localStorage.getItem('shoppingCart');
+      if (storedCart !== null) {
+        const parsedStoredCart = JSON.parse(storedCart);
+        if (parsedStoredCart.length > 0) setCart(parsedStoredCart);
       }
     }
   }, []);
 
-  function addOrRemoveItemFromCart(game) {
+  function addOrRemoveItemFromCart(game: Game) {
     const newCart = updateCart(cart, game);
     setCart(newCart);
   }
