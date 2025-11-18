@@ -20,8 +20,9 @@ export default function ShoppingCart() {
 
     if (localStorage) {
       const storedCart: string | null = localStorage.getItem('shoppingCart');
+      console.log(storedCart);
       if (storedCart !== null) {
-        setItemsInCart(JSON.parse(storedCart));
+        setItemsInCart(JSON.parse(storedCart).length);
       }
     }
 
