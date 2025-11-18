@@ -1,7 +1,7 @@
 import PageTitle from "../components/PageTitle";
 import Catalog from "../components/Catalog";
 
-export default async function Home({ searchParams }) {
+export default async function Home({ searchParams }: any) {
   const genre = (await searchParams).genre;
   const url = `${process.env.PROJECT_URL}/api/games${genre ? `?genre=${genre}` : ''}`;
   const data = await fetch(url);
