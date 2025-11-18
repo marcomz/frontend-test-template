@@ -4,8 +4,8 @@ import RemoveButton from "./RemoveButton.tsx";
 
 export default function CartItemCard({ game, removeItemFromCart, isItFirstInTheList }) {
   return (
-    <div className="px-4 relative border-gray-500 pt-5 border-t-[0.5px] first:pt-0 first:border-t-0 max-w-md mx-auto lg:flex lg:max-w-2xl">
-      <GameImage src={game.image} isItCartScreen={true} />
+    <div className="px-4 relative border-gray-500 pt-5 border-t-[0.5px] first:pt-0 first:border-t-0 max-w-md mx-6 lg:flex lg:max-w-2xl min-[496px]:mx-auto">
+      <GameImage src={game.image} isItCartScreen={true} isNew={game.isNew} />
       <RemoveButton game={game} removeItemFromCart={removeItemFromCart} isItFirstInTheList={isItFirstInTheList} />
       <div>
         <Genre genre={game.genre} />

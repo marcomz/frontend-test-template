@@ -1,7 +1,7 @@
 export default function CartSummary({ cart, itemsQuantityLabel }) {
   const total = cart.reduce((accumulator, item) => accumulator + item.price, 0);
   return (
-    <div className="border-[0.5] border-[#8F8F8F] rounded-lg text-[#3b3b3b] py-6 px-4">
+    <div className="border-[0.5] border-[#8F8F8F] rounded-lg text-[#3b3b3b] py-6 px-4 mx-4">
       <div className="font-bold text-xl leading-6 tracking-[0.4] mb-4">Order Summary</div>
       <div className="leading-6 tracking-[0.4] text-lg mb-10">{itemsQuantityLabel}</div>
       {
