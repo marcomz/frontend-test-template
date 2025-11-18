@@ -1,5 +1,5 @@
 export default function Loading() {
   return (
-    <div>Loading...</div>
+    <div className="my-16 text-6xl text-center font-bold">Loading...</div>
   )
 }

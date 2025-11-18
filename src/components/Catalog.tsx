@@ -76,7 +76,7 @@ export default function Catalog({ data, genreFromUrl = 'All' }) {
           games={games}
           showSeeMore={showSeeMore}
           areMoreGamesLoading={areMoreGamesLoading}
-        /> : <div>{`Loading ${newGenreLoading} Games`}</div>
+        /> : <div className="my-16 text-4xl text-center font-bold">Loading <span className="underline decoration-solid">{newGenreLoading}</span> Games...</div>
       }
     </>
   )
