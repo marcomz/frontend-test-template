@@ -1,4 +1,4 @@
-import BackToCatalog from "../../components/BackToCatalog.tsx";
+import BackToCatalog from "../../components/BackToCatalog";
 import CartScreen from "../../components/CartScreen.tsx";
 
 export default async function Cart() {
