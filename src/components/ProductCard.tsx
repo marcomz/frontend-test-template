@@ -1,6 +1,6 @@
-import GameImage from "./GameImage.tsx";
-import ProductInfo from "./ProductInfo.tsx";
-import AddToCartButton from "./AddToCartButton.tsx";
+import GameImage from "./GameImage";
+import ProductInfo from "./ProductInfo";
+import AddToCartButton from "./AddToCartButton";
 
 export default function ProductCard({ game, cart, addOrRemoveItemFromCart }) {
   return (

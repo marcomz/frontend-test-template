@@ -1,5 +1,5 @@
-import GenreIndicator from "./GenreIndicator.tsx";
-import GenreSelector from "./GenreSelector.tsx";
+import GenreIndicator from "./GenreIndicator";
+import GenreSelector from "./GenreSelector";
 
 export default function Filter({ categories, genre, updateGenre }) {
   return (

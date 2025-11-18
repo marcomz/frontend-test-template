@@ -1,5 +1,5 @@
-import Genre from "./Genre.tsx";
-import NameAndPrice from "./NameAndPrice.tsx";
+import Genre from "./Genre";
+import NameAndPrice from "./NameAndPrice";
 
 export default function ProductInfo({ game }) {
   return (

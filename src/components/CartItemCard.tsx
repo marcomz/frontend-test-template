@@ -1,6 +1,6 @@
-import GameImage from "./GameImage.tsx";
-import Genre from "./Genre.tsx";
-import RemoveButton from "./RemoveButton.tsx";
+import GameImage from "./GameImage";
+import Genre from "./Genre";
+import RemoveButton from "./RemoveButton";
 
 export default function CartItemCard({ game, removeItemFromCart, isItFirstInTheList }) {
   return (

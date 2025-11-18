@@ -1,5 +1,5 @@
-import Logo from "./Logo.tsx";
-import ShoppingCart from "./ShoppingCart.tsx";
+import Logo from "./Logo";
+import ShoppingCart from "./ShoppingCart";
 
 export default function NavBar() {
   return (

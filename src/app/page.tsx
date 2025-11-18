@@ -1,5 +1,5 @@
-import PageTitle from "../components/PageTitle.tsx";
-import Catalog from "../components/Catalog.tsx";
+import PageTitle from "../components/PageTitle";
+import Catalog from "../components/Catalog";
 
 export default async function Home({ searchParams }) {
   const genre = (await searchParams).genre;

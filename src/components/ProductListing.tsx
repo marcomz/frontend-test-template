@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import ProductCard from "./ProductCard.tsx";
-import SeeMoreButton from "./SeeMoreButton.tsx";
-import updateCart from "../utils/updateCart.ts";
+import ProductCard from "./ProductCard";
+import SeeMoreButton from "./SeeMoreButton";
+import updateCart from "../utils/updateCart";
 
 export default function ProductListing({ games, showSeeMore, areMoreGamesLoading, fetchMoreGames }) {
   const [cart, setCart] = useState([]);

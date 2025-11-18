@@ -1,7 +1,7 @@
 'use client';
 
-import Filter from "./Filter.tsx";
-import ProductListing from "./ProductListing.tsx";
+import Filter from "./Filter";
+import ProductListing from "./ProductListing";
 import { useState, useEffect } from 'react';
 
 export default function Catalog({ data, genreFromUrl = 'All' }) {

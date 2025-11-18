@@ -1,4 +1,4 @@
-import CartItemCard from "./CartItemCard.tsx";
+import CartItemCard from "./CartItemCard";
 
 export default function CartItemsList({ cart, removeItemFromCart }) {
   return (

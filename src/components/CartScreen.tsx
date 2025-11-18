@@ -1,10 +1,10 @@
 "use client";
 
-import CartTitle from "./CartTitle.tsx";
-import CartItemsList from "./CartItemsList.tsx";
-import CartSummary from "./CartSummary.tsx";
-import CheckoutButton from "./CheckoutButton.tsx";
-import updateCart from "../utils/updateCart.ts";
+import CartTitle from "./CartTitle";
+import CartItemsList from "./CartItemsList";
+import CartSummary from "./CartSummary";
+import CheckoutButton from "./CheckoutButton";
+import updateCart from "../utils/updateCart";
 
 import { useState, useEffect } from 'react';
 

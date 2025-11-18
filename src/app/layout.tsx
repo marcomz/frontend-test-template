@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "./globals.css";
-import NavBar from "../components/NavBar.tsx";
-import Footer from "../components/Footer.tsx";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const archivo = Archivo({ subsets: ["latin"] });
 
