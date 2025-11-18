@@ -1,5 +1,5 @@
 import { expect, describe, it, vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import ShoppingCart from '../components/ShoppingCart.tsx';
 
 let originalLocalStorage;
