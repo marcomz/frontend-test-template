@@ -3,7 +3,7 @@ import Catalog from "../components/Catalog.tsx";
 
 export default async function Home({ searchParams }) {
   const genre = (await searchParams).genre;
-  let url = `http://localhost:3000/api/games${genre ? `?genre=${genre}` : ''}`;
+  let url = `${process.env.PROJECT_URL}/api/games${genre ? `?genre=${genre}` : ''}`;
   const data = await fetch(url);
   const result = await data.json();
 

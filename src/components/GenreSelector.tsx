@@ -20,7 +20,7 @@ export default function GenreSelector({ categories, genre, updateGenre }) {
 
   return (
     <div className="grow">
-      <select name="genre" value={selectedItem} className="w-full" onChange={handleChange} className="text-xl pl-[4] w-full">
+      <select name="genre" value={selectedItem} onChange={handleChange} className="w-full text-xl pl-[4] w-full">
         <option value="All">All</option>
         {
           categories.map((category, index) => <option value={category} key={`category_select_${index}`}>{category}</option>)
